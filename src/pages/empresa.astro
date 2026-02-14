@@ -1,0 +1,91 @@
+---
+import Button from '../components/Button.astro';
+import LayoutMain from '../layouts/LayoutMain.astro';
+
+const whatsappHref =
+	'https://wa.me/56933301114?text=Hola,%20quiero%20coordinar%20una%20reunion%20con%20Exportandes.';
+---
+
+<LayoutMain
+	title="Empresa de reciclaje y exportacion de metales | Exportandes"
+	description="Conozca a Exportandes: operacion desde Bio Bio a Estambul con enfoque en economia circular, trazabilidad y compra profesional de chatarra metalica."
+	canonicalPath="/empresa"
+	pageType="article"
+>
+	<article class="section-shell space-y-20 py-12 md:py-16">
+		<section class="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+			<div class="space-y-6">
+				<p class="kicker">NUESTRA EMPRESA</p>
+				<h1 class="display-title max-w-[10ch]">De Bio Bio a Estambul: cadena seria de exportacion.</h1>
+				<p class="section-subtitle">
+					Exportandes nace en Concepcion para transformar descarte metalico en valor real de mercado. Conectamos
+					proveedores locales con demanda internacional y trazabilidad de proceso, desde retiro hasta embarque.
+				</p>
+				<Button href={whatsappHref}>Hablar con nuestro equipo</Button>
+			</div>
+			<figure class="metal-panel overflow-hidden">
+				<img
+					src="/images/ruta-exportacion.webp"
+					width="960"
+					height="640"
+					loading="eager"
+					decoding="async"
+					alt="Logistica de exportacion de metales desde Concepcion hacia Turquia"
+					class="h-full w-full object-cover"
+				/>
+			</figure>
+		</section>
+
+		<section class="grid gap-5 lg:grid-cols-[1.2fr_1fr]">
+			<article class="metal-panel">
+				<div class="metal-panel-inner space-y-5">
+					<p class="kicker">NARRATIVA OPERACIONAL</p>
+					<h2 class="font-display text-[clamp(2rem,4.5vw,3.7rem)] uppercase leading-[0.9] tracking-tight">
+						Una ruta de valor, no solo retiro de chatarra
+					</h2>
+					<p class="text-sm leading-relaxed text-slate-300">
+						Trabajamos con constructoras, bodegas, maestranzas y plantas de proceso. Clasificamos, consolidamos y
+						preparamos carga para fundicion internacional con estandares que resisten auditoria.
+					</p>
+					<ol class="space-y-3 text-sm leading-relaxed text-slate-300">
+						<li><span class="font-semibold text-metal-silver">01.</span> Diagnostico tecnico de lote y trazabilidad.</li>
+						<li><span class="font-semibold text-metal-silver">02.</span> Compra formal con pago inmediato.</li>
+						<li><span class="font-semibold text-metal-silver">03.</span> Acondicionamiento para economia de fundicion.</li>
+						<li><span class="font-semibold text-metal-silver">04.</span> Consolidacion y salida maritima a Turquia.</li>
+					</ol>
+				</div>
+			</article>
+
+			<aside class="metal-panel">
+				<div class="metal-panel-inner space-y-4">
+					<p class="kicker">MISION</p>
+					<p class="text-sm leading-relaxed text-slate-300">
+						Hacer economia circular real en Chile, evitando vertederos y devolviendo metales estrategicos a la cadena
+						productiva global.
+					</p>
+					<p class="text-sm leading-relaxed text-slate-300">
+						Cada tonelada procesada reduce descarte, mejora eficiencia industrial y aporta continuidad a la industria
+						metalurgica.
+					</p>
+				</div>
+			</aside>
+		</section>
+
+		<section class="metal-panel">
+			<div class="metal-panel-inner grid gap-5 lg:grid-cols-3">
+				<article class="feature-card">
+					<h3 class="font-display text-3xl uppercase tracking-tight">Cumplimiento</h3>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">Documentacion, pesaje y respaldo para compra transparente.</p>
+				</article>
+				<article class="feature-card">
+					<h3 class="font-display text-3xl uppercase tracking-tight">Velocidad</h3>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">Respuestas en horas, no semanas. Operamos ritmo industrial.</p>
+				</article>
+				<article class="feature-card">
+					<h3 class="font-display text-3xl uppercase tracking-tight">Escala</h3>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">Capacidad para contratos recurrentes y lotes de alto tonelaje.</p>
+				</article>
+			</div>
+		</section>
+	</article>
+</LayoutMain>

@@ -1,0 +1,141 @@
+@import "tailwindcss";
+@config "../../tailwind.config.mjs";
+@import "@fontsource/inter/index.css";
+@import "@fontsource/oswald/500.css";
+@import "@fontsource/oswald/700.css";
+
+@theme {
+	--color-primary-navy: #0f172a;
+	--color-accent-green: #00ff94;
+	--color-metal-silver: #e2e8f0;
+	--color-copper-rust: #b45309;
+	--font-sans: "Inter", system-ui, sans-serif;
+	--font-display: "Oswald", "Inter", system-ui, sans-serif;
+}
+
+:root {
+	color-scheme: dark;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	@apply min-h-screen bg-primary-navy font-sans text-metal-silver antialiased;
+	background-image:
+		radial-gradient(circle at 78% -12%, rgb(0 255 148 / 18%), transparent 43%),
+		radial-gradient(circle at -12% 32%, rgb(148 163 184 / 16%), transparent 45%),
+		linear-gradient(180deg, #0f172a 0%, #020617 100%);
+}
+
+a {
+	@apply transition-colors duration-200;
+}
+
+::selection {
+	background: rgb(0 255 148 / 34%);
+	color: #020617;
+}
+
+@layer components {
+	.skip-link {
+		@apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-accent-green focus:px-4 focus:py-2 focus:font-semibold focus:text-slate-950;
+	}
+
+	.section-shell {
+		@apply mx-auto w-full max-w-[1280px] px-6 lg:px-12;
+	}
+
+	.kicker {
+		@apply text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-slate-300/85;
+	}
+
+	.display-title {
+		@apply font-display text-[clamp(2.2rem,6vw,5rem)] uppercase leading-[0.88] tracking-tight text-metal-silver;
+	}
+
+	.hero-title {
+		@apply font-display text-[clamp(3.2rem,10vw,9.2rem)] uppercase leading-[0.8] tracking-tight text-metal-silver;
+	}
+
+	.section-subtitle {
+		@apply max-w-3xl text-balance text-lg text-slate-300;
+	}
+
+	.metal-panel {
+		@apply rounded-[1.9rem] border border-transparent bg-clip-border bg-gradient-to-r from-gray-800 to-gray-900 p-[1px] shadow-metal;
+	}
+
+	.metal-panel-inner {
+		@apply h-full rounded-[1.84rem] border border-white/10 bg-slate-900/85 p-6 md:p-8;
+	}
+
+	.hero-mesh {
+		@apply pointer-events-none absolute inset-0 animate-mesh opacity-45;
+	}
+
+	.nav-link {
+		@apply text-sm font-medium uppercase tracking-[0.14em] text-slate-300 hover:text-accent-green;
+	}
+
+	.info-pill {
+		@apply inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-100;
+	}
+
+	.cta-button {
+		@apply inline-flex items-center justify-center rounded-full border border-accent-green bg-accent-green px-7 py-3 text-center text-sm font-bold uppercase tracking-[0.16em] text-slate-950 shadow-[0_10px_38px_-14px_rgba(0,255,148,0.95)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-300;
+	}
+
+	.ghost-button {
+		@apply inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-semibold uppercase tracking-[0.15em] text-slate-100 hover:border-accent-green/70 hover:text-accent-green;
+	}
+
+	.ticker-wrap {
+		@apply overflow-hidden border-y border-white/10 bg-slate-900/70 py-4;
+	}
+
+	.ticker-track {
+		@apply flex w-max animate-ticker items-center gap-6;
+	}
+
+	.ticker-item {
+		@apply font-display text-[1.05rem] uppercase tracking-[0.18em] text-slate-200;
+	}
+
+	.metal-card {
+		@apply h-full rounded-[1.7rem] border border-white/10 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 p-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] md:p-7;
+	}
+
+	.metal-card-title {
+		@apply font-display text-[1.9rem] uppercase leading-none tracking-tight text-metal-silver;
+	}
+
+	.metal-icon-wrap {
+		@apply inline-flex h-11 w-11 items-center justify-center rounded-xl border border-accent-green/45 bg-accent-green/10 text-accent-green;
+	}
+
+	.metal-list-item {
+		@apply text-sm uppercase tracking-[0.11em] text-slate-300;
+	}
+
+	.feature-card {
+		@apply rounded-2xl border border-white/10 bg-slate-900/75 p-5;
+	}
+
+	.data-table {
+		@apply w-full overflow-hidden rounded-2xl border border-white/10 bg-slate-950/70 text-left;
+	}
+
+	.data-table th {
+		@apply border-b border-white/10 bg-slate-900/90 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-300;
+	}
+
+	.data-table td {
+		@apply border-b border-white/10 px-4 py-3 text-sm text-slate-200;
+	}
+
+	.whatsapp-float {
+		@apply fixed bottom-5 right-5 z-[120] inline-flex items-center gap-3 rounded-full border border-accent-green/75 bg-slate-950 px-4 py-3 text-sm font-bold uppercase tracking-[0.1em] text-accent-green shadow-[0_12px_30px_-10px_rgba(0,255,148,0.55)];
+	}
+}

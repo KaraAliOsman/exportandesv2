@@ -1,0 +1,208 @@
+---
+import { FileBadge2, HandCoins, Truck } from 'lucide-react';
+import Button from '../components/Button.astro';
+import MetalCard from '../components/MetalCard';
+import LayoutMain from '../layouts/LayoutMain.astro';
+
+const whatsappHref =
+	'https://wa.me/56933301114?text=Hola,%20quiero%20vender%20chatarra%20y%20necesito%20una%20cotizacion.';
+
+const tickerItems = [
+	'ALUMINIO: ALTA DEMANDA',
+	'COBRE: PRECIO ESTABLE',
+	'BRONCE: COMPRANDO',
+	'LME: MERCADO ACTIVO',
+];
+---
+
+<LayoutMain
+	title="Vender Cobre y Aluminio en Concepcion | Exportandes (Mejor Precio)"
+	description="Exportandes compra aluminio y cobre en Concepcion, paga rapido y exporta directo a Turquia. Operacion formal para industria, constructoras y bodegas."
+	canonicalPath="/"
+>
+	<article class="pb-24">
+		<section class="section-shell grid min-h-[82svh] gap-6 py-10 md:py-16 lg:grid-cols-[1.55fr_1fr] lg:items-end">
+			<div class="metal-panel relative overflow-hidden">
+				<div class="hero-mesh" aria-hidden="true">
+					<svg viewBox="0 0 1400 820" class="h-full w-full">
+						<defs>
+							<linearGradient id="meshStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+								<stop offset="0%" stop-color="#00FF94" stop-opacity="0.65"></stop>
+								<stop offset="55%" stop-color="#38BDF8" stop-opacity="0.22"></stop>
+								<stop offset="100%" stop-color="#E2E8F0" stop-opacity="0.08"></stop>
+							</linearGradient>
+						</defs>
+						<path d="M0 225 Q280 190 470 265 T980 242 T1400 260" stroke="url(#meshStroke)" stroke-width="2" fill="none"></path>
+						<path d="M0 362 Q245 332 460 380 T960 360 T1400 392" stroke="url(#meshStroke)" stroke-width="2" fill="none"></path>
+						<path d="M0 510 Q220 480 430 534 T980 512 T1400 535" stroke="url(#meshStroke)" stroke-width="2" fill="none"></path>
+						<path d="M170 0 V820 M350 0 V820 M530 0 V820 M710 0 V820 M890 0 V820 M1070 0 V820 M1250 0 V820" stroke="url(#meshStroke)" stroke-width="1" fill="none"></path>
+					</svg>
+				</div>
+				<div class="metal-panel-inner relative z-10 space-y-8 p-7 md:p-12">
+					<p class="kicker">CONCEPCION | BIO BIO | EXPORTACION A TURQUIA</p>
+					<h1 class="hero-title max-w-[10.5ch]">Transformamos su Chatarra en Exportacion Global.</h1>
+					<p class="max-w-[62ch] text-balance text-lg leading-relaxed text-slate-200">
+						Compramos Aluminio y Cobre en Bio Bio. Pagamos precio justo segun calidad de material,
+						referencia LME y volumen real. Flujo formal, trazable y sin intermediarios.
+					</p>
+					<Button href={whatsappHref} class="w-full text-base sm:w-auto md:px-9 md:py-4 md:text-lg">
+						COTIZAR VENTA POR WHATSAPP
+					</Button>
+				</div>
+			</div>
+
+			<aside class="metal-panel">
+				<div class="metal-panel-inner flex h-full flex-col justify-between gap-8">
+					<div class="space-y-4">
+						<p class="kicker">OPERACION RAPIDA PARA INDUSTRIA</p>
+						<p class="font-display text-[clamp(2.8rem,7vw,5.2rem)] uppercase leading-[0.82] tracking-tight text-metal-silver">
+							Vender. Aluminio. Ahora.
+						</p>
+					</div>
+					<div class="grid gap-3 text-sm uppercase tracking-[0.11em] text-slate-300">
+						<p class="rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3">Retiro en terreno para volumen industrial</p>
+						<p class="rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3">Pago inmediato y respaldo documental</p>
+						<p class="rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3">Trazabilidad de exportacion y certificacion</p>
+					</div>
+				</div>
+			</aside>
+		</section>
+
+		<aside class="ticker-wrap mt-4" aria-label="Ticker de mercado de metales">
+			<div class="ticker-track">
+				{
+					[...tickerItems, ...tickerItems].map((item) => (
+						<span class="ticker-item">{item} •</span>
+					))
+				}
+			</div>
+		</aside>
+
+		<section class="section-shell mt-24" id="metales">
+			<header class="space-y-5">
+				<p class="kicker">QUE COMPRAMOS</p>
+				<h2 class="display-title max-w-[13ch]">Bento industrial para metales con salida real.</h2>
+				<p class="section-subtitle">
+					Clasificamos por familia metalica, limpieza y densidad. Menor contaminacion, mejor precio por kilo.
+					Evaluacion tecnica en patio o en su planta.
+				</p>
+			</header>
+			<div class="mt-11 grid auto-rows-[minmax(180px,1fr)] gap-5 md:grid-cols-6">
+				<div class="md:col-span-4 md:row-span-2">
+					<MetalCard
+						client:visible
+						icon="aluminio"
+						badge="FOCO 01"
+						title="Aluminio"
+						description="Recibimos perfiles, viruta limpia, latas compactadas y descarte industrial. Operamos por lote y continuidad."
+						bullets={['Perfiles', 'Latas prensadas', 'Scrap industrial']}
+					/>
+				</div>
+				<div class="md:col-span-2 md:row-span-2">
+					<MetalCard
+						client:visible
+						icon="cobre"
+						badge="FOCO 02"
+						title="Cobre"
+						description="Compramos cobre de primera y segunda, cables pelados, tuberias y recortes con separacion por pureza."
+						bullets={['Cables', 'Tuberias', 'Recortes segregados']}
+					/>
+				</div>
+				<div class="md:col-span-3">
+					<MetalCard
+						client:visible
+						icon="bronce"
+						badge="SECUNDARIO"
+						title="Bronce y Laton"
+						description="Materiales de fundicion y mecanizado con analisis por mezcla y trazas."
+						bullets={['Valvulas', 'Piezas industriales', 'Mezclas controladas']}
+					/>
+				</div>
+				<div class="md:col-span-3">
+					<MetalCard
+						client:visible
+						icon="otros"
+						badge="COMPLEMENTARIO"
+						title="Otros Metales"
+						description="Evaluamos inox, zamak y lotes mixtos para reciclaje y consolidacion de carga."
+						bullets={['Inoxidable', 'Zamak', 'Lotes mixtos']}
+					/>
+				</div>
+			</div>
+		</section>
+
+		<section class="section-shell mt-24 grid gap-6 lg:grid-cols-[1.15fr_1fr]" id="ventajas">
+			<div class="metal-panel">
+				<div class="metal-panel-inner space-y-5">
+					<p class="kicker">POR QUE EXPORTANDES</p>
+					<h2 class="display-title max-w-[11ch]">Seriedad operacional para tomar decisiones rapidas.</h2>
+					<p class="section-subtitle">
+						No somos intermediarios de patio. Somos operador con criterio de commodities, lectura de precio LME y
+						ejecucion de exportacion. Eso se traduce en compra consistente y trato profesional.
+					</p>
+				</div>
+			</div>
+			<ul class="grid gap-4">
+				<li class="feature-card">
+					<div class="mb-3 inline-flex rounded-lg border border-accent-green/45 bg-accent-green/10 p-2 text-accent-green">
+						<HandCoins size={20} strokeWidth={1.8} aria-hidden="true" />
+					</div>
+					<h3 class="font-display text-3xl uppercase tracking-tight">Pago Inmediato</h3>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">Liquidacion clara por peso, pureza y fecha de retiro.</p>
+				</li>
+				<li class="feature-card">
+					<div class="mb-3 inline-flex rounded-lg border border-accent-green/45 bg-accent-green/10 p-2 text-accent-green">
+						<Truck size={20} strokeWidth={1.8} aria-hidden="true" />
+					</div>
+					<h3 class="font-display text-3xl uppercase tracking-tight">Retiro en Terreno</h3>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">
+						Servicio para volumen industrial en Concepcion, Talcahuano y Gran Bio Bio.
+					</p>
+				</li>
+				<li class="feature-card">
+					<div class="mb-3 inline-flex rounded-lg border border-accent-green/45 bg-accent-green/10 p-2 text-accent-green">
+						<FileBadge2 size={20} strokeWidth={1.8} aria-hidden="true" />
+					</div>
+					<h3 class="font-display text-3xl uppercase tracking-tight">Certificacion de Exportacion</h3>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">
+						Documentacion y trazabilidad desde origen hasta consolidacion de carga.
+					</p>
+				</li>
+			</ul>
+		</section>
+
+		<footer class="section-shell mt-24">
+			<section class="metal-panel">
+				<div class="metal-panel-inner grid gap-8 lg:grid-cols-[1fr_1.2fr]">
+					<aside class="space-y-5">
+						<p class="kicker">CONTACTO Y UBICACION</p>
+						<h2 class="display-title max-w-[9ch]">Concepcion, foco industrial.</h2>
+						<address class="not-italic space-y-2 text-sm leading-relaxed text-slate-300">
+							<p>Av. Pedro de Valdivia 733, Concepcion, Bio Bio, Chile</p>
+							<p><a href="tel:+56933301114" class="hover:text-accent-green">+56 9 3330 1114</a></p>
+							<p>
+								<a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="hover:text-accent-green">
+									Cotizacion directa por WhatsApp
+								</a>
+							</p>
+						</address>
+						<nav aria-label="Links internos" class="flex flex-wrap gap-3">
+							<Button href="/compramos-aluminio" variant="ghost" external={false}>Compramos Aluminio</Button>
+							<Button href="/compramos-cobre" variant="ghost" external={false}>Compramos Cobre</Button>
+							<Button href="/empresa" variant="ghost" external={false}>Empresa</Button>
+						</nav>
+					</aside>
+					<div class="overflow-hidden rounded-2xl border border-white/10 bg-slate-950">
+						<iframe
+							class="h-[340px] w-full grayscale contrast-125"
+							src="https://www.google.com/maps?q=Av.+Pedro+de+Valdivia+733,+Concepcion,+Chile&output=embed"
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"
+							title="Mapa Exportandes Concepcion"
+						></iframe>
+					</div>
+				</div>
+			</section>
+		</footer>
+	</article>
+</LayoutMain>

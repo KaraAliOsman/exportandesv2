@@ -1,0 +1,29 @@
+---
+interface Props {
+	href: string;
+	variant?: 'primary' | 'ghost';
+	class?: string;
+	ariaLabel?: string;
+	external?: boolean;
+}
+
+const {
+	href,
+	variant = 'primary',
+	class: className = '',
+	ariaLabel,
+	external = href.startsWith('http'),
+} = Astro.props;
+
+const variantClass = variant === 'primary' ? 'cta-button' : 'ghost-button';
+---
+
+<a
+	href={href}
+	class:list={[variantClass, className]}
+	aria-label={ariaLabel}
+	target={external ? '_blank' : undefined}
+	rel={external ? 'noopener noreferrer' : undefined}
+>
+	<slot />
+</a>

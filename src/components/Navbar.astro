@@ -1,0 +1,30 @@
+---
+const links = [
+	{ href: '/', label: 'Inicio' },
+	{ href: '/compramos-aluminio', label: 'Aluminio' },
+	{ href: '/compramos-cobre', label: 'Cobre' },
+	{ href: '/empresa', label: 'Empresa' },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-white/10 bg-primary-navy/85 backdrop-blur-xl">
+	<nav class="section-shell flex items-center justify-between gap-4 py-4" aria-label="Navegacion principal">
+		<a href="/" class="font-display text-2xl uppercase tracking-tight text-metal-silver sm:text-3xl">
+			Exportandes
+			<span class="text-accent-green">.cl</span>
+		</a>
+		<div class="hidden items-center gap-7 md:flex">
+			{
+				links.map((link) => (
+					<a href={link.href} class="nav-link">
+						{link.label}
+					</a>
+				))
+			}
+		</div>
+		<a href="tel:+56933301114" class="info-pill">
+			<span class="h-2 w-2 rounded-full bg-accent-green"></span>
+			+56 9 3330 1114
+		</a>
+	</nav>
+</header>

@@ -1,0 +1,110 @@
+---
+import Button from '../components/Button.astro';
+import LayoutMain from '../layouts/LayoutMain.astro';
+
+const whatsappHref =
+	'https://wa.me/56933301114?text=Hola,%20quiero%20consultar%20precio%20de%20cobre%20chatarra%20en%20Chile.';
+---
+
+<LayoutMain
+	title="Precio cobre chatarra Chile | Exportandes (Compra en Concepcion)"
+	description="Consultas de precio cobre chatarra en Chile con foco en Concepcion. Clasificacion de cobre de primera y segunda con pago inmediato y respaldo de exportacion."
+	canonicalPath="/compramos-cobre"
+	pageType="article"
+>
+	<article class="section-shell space-y-20 py-12 md:py-16">
+		<section class="grid gap-7 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+			<div class="space-y-6">
+				<p class="kicker">SILO SEO | PRECIO COBRE CHATARRA CHILE</p>
+				<h1 class="display-title max-w-[10ch]">Compramos cobre con lectura de pureza y mercado.</h1>
+				<p class="section-subtitle">
+					El precio de cobre chatarra en Chile depende de la categoria del material, contaminacion y referencia LME del
+					dia. En Exportandes le indicamos rango tecnico, no un numero inflado sin sustento.
+				</p>
+				<Button href={whatsappHref}>Consultar precio de cobre</Button>
+			</div>
+			<figure class="metal-panel overflow-hidden">
+				<img
+					src="/images/cobre-industrial.webp"
+					width="960"
+					height="640"
+					loading="eager"
+					decoding="async"
+					alt="Rollos y recortes de cobre clasificados para venta industrial"
+					class="h-full w-full object-cover"
+				/>
+			</figure>
+		</section>
+
+		<section class="grid gap-5 lg:grid-cols-2">
+			<article class="metal-panel">
+				<div class="metal-panel-inner space-y-4">
+					<p class="kicker">COBRE DE PRIMERA</p>
+					<h2 class="font-display text-4xl uppercase leading-none tracking-tight">Alta pureza, mejor valor</h2>
+					<ul class="space-y-2 text-sm leading-relaxed text-slate-300">
+						<li>Cable pelado brillante sin estaño ni barnices.</li>
+						<li>Tuberia limpia sin uniones ferrosas ni soldaduras mixtas.</li>
+						<li>Recortes industriales sin oxidacion severa.</li>
+					</ul>
+					<p class="text-xs uppercase tracking-[0.14em] text-accent-green">
+						Resultado: mejor precio por kilo y descarga preferente.
+					</p>
+				</div>
+			</article>
+
+			<article class="metal-panel">
+				<div class="metal-panel-inner space-y-4">
+					<p class="kicker">COBRE DE SEGUNDA</p>
+					<h2 class="font-display text-4xl uppercase leading-none tracking-tight">Mezcla o recubrimiento</h2>
+					<ul class="space-y-2 text-sm leading-relaxed text-slate-300">
+						<li>Cables con aislacion, grasa o pintura.</li>
+						<li>Piezas con soldadura, laton o insertos.</li>
+						<li>Material con mayor oxidacion o suciedad.</li>
+					</ul>
+					<p class="text-xs uppercase tracking-[0.14em] text-copper-rust">
+						Resultado: castigo tecnico por merma de fundicion.
+					</p>
+				</div>
+			</article>
+		</section>
+
+		<section class="grid gap-5 lg:grid-cols-[1.25fr_1fr]">
+			<article class="metal-panel">
+				<div class="metal-panel-inner space-y-5">
+					<p class="kicker">METODO DE EVALUACION</p>
+					<h2 class="font-display text-[clamp(2rem,4.4vw,3.8rem)] uppercase leading-[0.9] tracking-tight">
+						Como definimos su precio de cobre
+					</h2>
+					<ol class="space-y-3 text-sm leading-relaxed text-slate-300">
+						<li>
+							<span class="font-semibold text-metal-silver">1.</span> Clasificacion visual por categoria y origen del
+							material.
+						</li>
+						<li>
+							<span class="font-semibold text-metal-silver">2.</span> Verificacion de contaminacion, humedad y trazas de
+							mezcla.
+						</li>
+						<li>
+							<span class="font-semibold text-metal-silver">3.</span> Ajuste con referencia LME y costo logistico de
+							consolidacion.
+						</li>
+						<li>
+							<span class="font-semibold text-metal-silver">4.</span> Pago inmediato con respaldo de peso y documentos.
+						</li>
+					</ol>
+				</div>
+			</article>
+			<aside class="metal-panel">
+				<div class="metal-panel-inner space-y-4">
+					<p class="kicker">CHECKLIST PREVIO A RETIRO</p>
+					<ul class="space-y-2 text-sm uppercase tracking-[0.1em] text-slate-300">
+						<li class="rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3">Separar primera y segunda</li>
+						<li class="rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3">Retirar humedad y bolsas cerradas</li>
+						<li class="rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3">Enviar fotos y peso estimado</li>
+					</ul>
+					<Button href={whatsappHref} variant="ghost">Enviar detalle por WhatsApp</Button>
+				</div>
+			</aside>
+		</section>
+	</article>
+</LayoutMain>

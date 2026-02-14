@@ -1,0 +1,120 @@
+---
+import Button from '../components/Button.astro';
+import LayoutMain from '../layouts/LayoutMain.astro';
+
+const whatsappHref =
+	'https://wa.me/56933301114?text=Hola,%20quiero%20vender%20aluminio%20en%20Concepcion%20y%20necesito%20cotizacion.';
+
+const limpiezaRows = [
+	{
+		estado: 'Limpio y segregado',
+		ejemplo: 'Perfil 6063, ventana sin goma ni fierro',
+		impacto: 'Precio alto y descarga rapida',
+		accion: 'Separar por aleacion y compactar por lote',
+	},
+	{
+		estado: 'Mixto con otros metales',
+		ejemplo: 'Lote con aluminio + pernos de acero',
+		impacto: 'Descuento por merma y reproceso',
+		accion: 'Retirar insertos ferrosos antes del retiro',
+	},
+	{
+		estado: 'Contaminado o humedo',
+		ejemplo: 'Viruta con aceite o humedad prolongada',
+		impacto: 'Castigo en precio por riesgo de fundicion',
+		accion: 'Secar, drenar y embalar correctamente',
+	},
+];
+---
+
+<LayoutMain
+	title="Vender aluminio Concepcion | Exportandes (Compra Industrial)"
+	description="Compra de aluminio en Concepcion para constructoras, maestranzas e industria. Evaluacion tecnica por limpieza y volumen con referencia a mercado LME."
+	canonicalPath="/compramos-aluminio"
+	pageType="article"
+>
+	<article class="section-shell space-y-20 py-12 md:py-16">
+		<section class="grid gap-7 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+			<div class="space-y-6">
+				<p class="kicker">SILO SEO | VENDER ALUMINIO CONCEPCION</p>
+				<h1 class="display-title max-w-[10ch]">Compramos aluminio industrial con criterio tecnico.</h1>
+				<p class="section-subtitle">
+					Si necesita vender aluminio en Concepcion, en Exportandes evaluamos calidad de lote, limpieza y continuidad
+					de suministro. Cotizamos con logica de commodities y salida de exportacion real.
+				</p>
+				<Button href={whatsappHref}>Cotizar aluminio por WhatsApp</Button>
+			</div>
+			<figure class="metal-panel overflow-hidden">
+				<img
+					src="/images/aluminio-industrial.webp"
+					width="960"
+					height="640"
+					loading="eager"
+					decoding="async"
+					alt="Lote de aluminio industrial listo para reciclaje y exportacion"
+					class="h-full w-full object-cover"
+				/>
+			</figure>
+		</section>
+
+		<section class="grid gap-5 lg:grid-cols-3">
+			<article class="metal-panel lg:col-span-2">
+				<div class="metal-panel-inner space-y-4">
+					<p class="kicker">TIPOS DE ALUMINIO QUE COMPRAMOS</p>
+					<h2 class="font-display text-4xl uppercase leading-none tracking-tight">Recepcion por familia y pureza</h2>
+					<ul class="grid gap-3 text-sm uppercase tracking-[0.1em] text-slate-300 sm:grid-cols-2">
+						<li class="rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3">Perfiles de carpinteria metalica</li>
+						<li class="rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3">Latas prensadas y compactadas</li>
+						<li class="rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3">Recortes de plancha y troquelado</li>
+						<li class="rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3">Viruta seca sin aceite libre</li>
+						<li class="rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3">Scrap de linea productiva</li>
+						<li class="rounded-xl border border-white/10 bg-slate-900/70 px-4 py-3">Retornos de montaje y obra</li>
+					</ul>
+				</div>
+			</article>
+			<aside class="metal-panel">
+				<div class="metal-panel-inner space-y-4">
+					<p class="kicker">CRITERIO DE PRECIO</p>
+					<p class="text-sm leading-relaxed text-slate-300">
+						La referencia no es solo el kilo bruto. Consideramos LME, aleacion, humedad y tiempo de clasificacion.
+						Lote limpio significa mejor precio neto y pago mas agil.
+					</p>
+					<Button href={whatsappHref} variant="ghost">Enviar fotos del material</Button>
+				</div>
+			</aside>
+		</section>
+
+		<section>
+			<header class="space-y-4">
+				<p class="kicker">TABLA DE LIMPIEZA DE MATERIAL</p>
+				<h2 class="font-display text-[clamp(2rem,4.5vw,3.7rem)] uppercase leading-[0.9] tracking-tight">
+					Comparativa para maximizar su retorno por lote
+				</h2>
+			</header>
+			<div class="mt-6 overflow-x-auto">
+				<table class="data-table min-w-[780px]">
+					<thead>
+						<tr>
+							<th>Estado del aluminio</th>
+							<th>Ejemplo real</th>
+							<th>Impacto en precio</th>
+							<th>Recomendacion operativa</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							limpiezaRows.map((row) => (
+								<tr>
+									<td>{row.estado}</td>
+									<td>{row.ejemplo}</td>
+									<td>{row.impacto}</td>
+									<td>{row.accion}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</article>
+</LayoutMain>

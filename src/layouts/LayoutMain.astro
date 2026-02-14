@@ -1,0 +1,154 @@
+---
+import { SEO } from 'astro-seo';
+import Navbar from '../components/Navbar.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description: string;
+	canonicalPath?: string;
+	ogImage?: string;
+	pageType?: 'website' | 'article';
+	noindex?: boolean;
+}
+
+const {
+	title,
+	description,
+	canonicalPath = Astro.url.pathname,
+	ogImage = '/images/exportandes-og.webp',
+	pageType = 'website',
+	noindex = false,
+} = Astro.props;
+
+const siteUrl = Astro.site ?? new URL('https://exportandes.cl');
+const canonical = new URL(canonicalPath, siteUrl).toString();
+const ogImageUrl = new URL(ogImage, siteUrl).toString();
+
+const baseAddress = {
+	'@type': 'PostalAddress',
+	streetAddress: 'Av. Pedro de Valdivia 733',
+	addressLocality: 'Concepcion',
+	addressRegion: 'Bio Bio',
+	postalCode: '4030000',
+	addressCountry: 'CL',
+};
+
+const baseGeo = {
+	'@type': 'GeoCoordinates',
+	latitude: -36.8257,
+	longitude: -73.0508,
+};
+
+const businessSchema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': ['LocalBusiness', 'RecyclingCenter', 'Exporter'],
+			'@id': 'https://exportandes.cl/#business',
+			name: 'Exportandes',
+			url: 'https://exportandes.cl/',
+			description:
+				'Compra de chatarra de aluminio y cobre en Concepcion para reciclaje industrial y exportacion a Turquia.',
+			telephone: '+56933301114',
+			address: baseAddress,
+			geo: baseGeo,
+			openingHours: 'Mo-Fr 09:00-18:00',
+			openingHoursSpecification: [
+				{
+					'@type': 'OpeningHoursSpecification',
+					dayOfWeek: [
+						'https://schema.org/Monday',
+						'https://schema.org/Tuesday',
+						'https://schema.org/Wednesday',
+						'https://schema.org/Thursday',
+						'https://schema.org/Friday',
+					],
+					opens: '09:00',
+					closes: '18:00',
+				},
+			],
+			areaServed: ['Bio Bio', 'Concepcion', 'Talcahuano', 'Chile'],
+			hasMap: 'https://maps.google.com/?q=Av.+Pedro+de+Valdivia+733,+Concepcion,+Chile',
+			image: ogImageUrl,
+			priceRange: '$$',
+			sameAs: ['https://wa.me/56933301114'],
+		},
+		{
+			'@type': 'Organization',
+			'@id': 'https://exportandes.cl/#exporter',
+			name: 'Exportandes',
+			url: 'https://exportandes.cl/',
+			additionalType: 'https://schema.org/Exporter',
+			knowsAbout: ['Aluminio reciclado', 'Cobre chatarra', 'Commodities', 'LME'],
+			areaServed: ['Bio Bio', 'Concepcion', 'Talcahuano', 'Chile'],
+		},
+	],
+};
+---
+
+<!doctype html>
+<html lang="es-CL">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<SEO
+			title={title}
+			titleTemplate="%s | Exportandes"
+			description={description}
+			canonical={canonical}
+			noindex={noindex}
+			nofollow={false}
+			robotsExtras="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+			openGraph={{
+				basic: {
+					title,
+					type: pageType,
+					image: ogImageUrl,
+					url: canonical,
+				},
+				optional: {
+					description,
+					locale: 'es_CL',
+					siteName: 'Exportandes',
+				},
+				image: {
+					alt: 'Exportandes, compra y exportacion de metales en Concepcion',
+					type: 'image/webp',
+					width: 1200,
+					height: 630,
+				},
+			}}
+			twitter={{
+				card: 'summary_large_image',
+				title,
+				description,
+				image: ogImageUrl,
+				imageAlt: 'Exportandes en Concepcion',
+			}}
+			extend={{
+				meta: [
+					{ name: 'theme-color', content: '#0F172A' },
+					{ name: 'geo.region', content: 'CL-BI' },
+					{ name: 'geo.placename', content: 'Concepcion' },
+					{ name: 'geo.position', content: '-36.8257;-73.0508' },
+					{ name: 'ICBM', content: '-36.8257, -73.0508' },
+				],
+			}}
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
+		<slot name="head" />
+	</head>
+	<body>
+		<a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+		<Navbar />
+		<main id="contenido-principal">
+			<slot />
+		</main>
+		<WhatsAppFloat client:load />
+	</body>
+</html>
