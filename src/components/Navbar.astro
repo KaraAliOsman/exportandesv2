@@ -1,0 +1,226 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: 'Inicio' },
+  { href: '/precios', label: 'Lista de Precios' },
+  {
+    href: '#',
+    label: 'Materiales',
+    children: [
+      { href: '/materiales/aluminio', label: 'Aluminio' },
+      { href: '/materiales/cobre', label: 'Cobre' },
+    ],
+  },
+  { href: '/nosotros', label: 'Nosotros' },
+  { href: '/contacto', label: 'Contacto' },
+];
+
+const whatsappUrl = 'https://wa.me/56933301114?text=Hola,%20vi%20su%20web%20y%20quiero%20vender%20mi%20material.';
+---
+
+<header
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+>
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-18 items-center justify-between py-3">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="relative">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent-teal to-primary flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-white">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <span class="text-xl font-heading font-bold tracking-tight">
+          <span class="text-white">EXPORT</span><span class="text-accent-teal">ANDES</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-1">
+        {navLinks.map((link) => (
+          link.children ? (
+            <div class="relative group">
+              <button
+                class={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                  currentPath.startsWith('/materiales')
+                    ? 'text-accent-teal'
+                    : 'text-gray-300 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {link.label}
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transform transition-transform group-hover:rotate-180">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="absolute top-full left-0 mt-1 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+                <div class="glass rounded-xl p-2 shadow-2xl">
+                  {link.children.map((child) => (
+                    <a
+                      href={child.href}
+                      class={`block px-4 py-2.5 text-sm rounded-lg transition-all duration-200 ${
+                        currentPath === child.href
+                          ? 'bg-accent-teal/20 text-accent-teal'
+                          : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                      }`}
+                    >
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={link.href}
+              class={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                currentPath === link.href
+                  ? 'text-accent-teal bg-accent-teal/10'
+                  : 'text-gray-300 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              {link.label}
+            </a>
+          )
+        ))}
+      </div>
+
+      <!-- CTA + Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-accent-teal text-white text-sm font-heading font-semibold rounded-lg transition-all duration-300 hover:bg-accent-teal-light hover:shadow-lg hover:shadow-accent-teal/25 animate-pulse-slow"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          VENDER AHORA
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all"
+          aria-label="Abrir menú"
+        >
+          <svg id="menu-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+          <svg id="menu-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Panel -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden hidden opacity-0 transition-all duration-300"
+  >
+    <div class="glass-strong mx-4 mb-4 rounded-2xl p-4 shadow-2xl">
+      {navLinks.map((link) => (
+        link.children ? (
+          <div>
+            <span class="block px-4 py-2 text-xs font-heading font-semibold text-gray-500 uppercase tracking-wider mt-2">
+              {link.label}
+            </span>
+            {link.children.map((child) => (
+              <a
+                href={child.href}
+                class={`block px-4 py-3 text-sm rounded-lg transition-all duration-200 ${
+                  currentPath === child.href
+                    ? 'bg-accent-teal/20 text-accent-teal'
+                    : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                {child.label}
+              </a>
+            ))}
+          </div>
+        ) : (
+          <a
+            href={link.href}
+            class={`block px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 ${
+              currentPath === link.href
+                ? 'bg-accent-teal/20 text-accent-teal'
+                : 'text-gray-300 hover:bg-white/10 hover:text-white'
+            }`}
+          >
+            {link.label}
+          </a>
+        )
+      ))}
+      <div class="mt-4 pt-4 border-t border-white/10">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-whatsapp w-full justify-center"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          VENDER AHORA
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIconOpen = document.getElementById('menu-icon-open');
+  const menuIconClose = document.getElementById('menu-icon-close');
+
+  let isMenuOpen = false;
+
+  // Navbar scroll effect
+  function handleScroll() {
+    if (!navbar) return;
+    if (window.scrollY > 50) {
+      navbar.classList.add('bg-carbon/80', 'backdrop-blur-xl', 'border-b', 'border-white/5', 'shadow-2xl');
+    } else {
+      navbar.classList.remove('bg-carbon/80', 'backdrop-blur-xl', 'border-b', 'border-white/5', 'shadow-2xl');
+    }
+  }
+
+  // Mobile menu toggle
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+    if (mobileMenu && menuIconOpen && menuIconClose) {
+      if (isMenuOpen) {
+        mobileMenu.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          mobileMenu.classList.remove('opacity-0');
+          mobileMenu.classList.add('opacity-100');
+        });
+        menuIconOpen.classList.add('hidden');
+        menuIconClose.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('opacity-0');
+        mobileMenu.classList.remove('opacity-100');
+        setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  mobileMenuBtn?.addEventListener('click', toggleMenu);
+  handleScroll();
+</script>

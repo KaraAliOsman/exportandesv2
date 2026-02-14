@@ -1,0 +1,87 @@
+---
+const features = [
+  {
+    title: 'Pago Inmediato',
+    description: 'Recibe tu dinero en el momento. Sin esperas, sin cheques, sin letra chica. Transferencia o efectivo al instante.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>`,
+    color: 'from-green-400 to-emerald-600',
+    bg: 'bg-green-500/10',
+  },
+  {
+    title: 'Pesaje Transparente',
+    description: 'Balanza certificada a la vista. Tú ves el peso, tú confirmas el precio. Sin sorpresas, sin descuentos ocultos.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v1m0 16v1m-8-9H3m18 0h-1M5.6 5.6l.7.7m12.1-.7-.7.7M5.6 18.4l.7-.7m12.1.7-.7-.7"/><circle cx="12" cy="12" r="4"/></svg>`,
+    color: 'from-blue-400 to-cyan-600',
+    bg: 'bg-blue-500/10',
+  },
+  {
+    title: 'Mejores Precios del Mercado',
+    description: 'Exportamos directo a Turquía. Sin intermediarios = más dinero para ti. Compara y comprueba que pagamos más.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>`,
+    color: 'from-amber-400 to-orange-600',
+    bg: 'bg-amber-500/10',
+  },
+  {
+    title: 'Retiro a Domicilio',
+    description: 'Para grandes volúmenes (+500 kg), vamos a buscar tu material. Camión con grúa y equipo propio en toda la región.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"/><path d="M14 9h4l4 4v4c0 .6-.4 1-1 1h-1"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M9 18h6"/></svg>`,
+    color: 'from-purple-400 to-violet-600',
+    bg: 'bg-purple-500/10',
+  },
+  {
+    title: 'Cobertura Regional',
+    description: 'Operamos en toda la Región del Bio Bio. Concepción, Talcahuano, Chiguayante, San Pedro, Coronel y más.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+    color: 'from-teal-400 to-cyan-600',
+    bg: 'bg-teal-500/10',
+  },
+  {
+    title: 'Exportación Directa',
+    description: 'Tu material viaja desde Bio Bio hasta las fundiciones de Turquía. Cadena directa que nos permite pagar más.',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>`,
+    color: 'from-accent-teal to-primary',
+    bg: 'bg-accent-teal/10',
+  },
+];
+---
+
+<section class="section-wrapper relative overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-carbon"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-accent-teal/3 rounded-full blur-3xl"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="inline-block px-4 py-1.5 rounded-full glass text-sm text-accent-teal font-heading font-medium mb-4">
+        Nuestras ventajas
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-4">
+        ¿Por qué <span class="text-gradient">Exportandes</span>?
+      </h2>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+        No somos una chatarrería más. Somos un trader internacional que paga precios de exportación directamente al proveedor local.
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {features.map((feature, i) => (
+        <article
+          class="group glass rounded-2xl p-7 transition-all duration-500 hover:border-accent-teal/20 hover:translate-y-[-4px]"
+          style={`animation-delay: ${i * 100}ms`}
+        >
+          <div class={`w-16 h-16 rounded-2xl ${feature.bg} flex items-center justify-center mb-5 text-white transition-transform duration-300 group-hover:scale-110`}>
+            <Fragment set:html={feature.icon} />
+          </div>
+          <h3 class="text-xl font-heading font-semibold text-white mb-3 group-hover:text-accent-teal transition-colors duration-300">
+            {feature.title}
+          </h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            {feature.description}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

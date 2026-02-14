@@ -1,0 +1,43 @@
+---
+const prices = [
+  { name: 'Cobre N°1', price: '$6.500/kg', trend: 'up', icon: '🔴' },
+  { name: 'Cobre N°2', price: '$3.200/kg', trend: 'up', icon: '🟠' },
+  { name: 'Perfil Aluminio', price: '$1.900/kg', trend: 'up', icon: '🔵' },
+  { name: 'Aluminio Duro', price: '$1.400/kg', trend: 'stable', icon: '⚪' },
+  { name: 'Latas Aluminio', price: '$900/kg', trend: 'up', icon: '🟢' },
+  { name: 'Bronce', price: '$4.200/kg', trend: 'up', icon: '🟡' },
+  { name: 'Radiadores', price: '$3.800/kg', trend: 'stable', icon: '🟤' },
+  { name: 'Baterías', price: '$300/kg', trend: 'down', icon: '⚫' },
+];
+---
+
+<div class="relative overflow-hidden bg-carbon border-y border-white/5 py-3">
+  <!-- Gradient fade edges -->
+  <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-carbon to-transparent z-10"></div>
+  <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-carbon to-transparent z-10"></div>
+
+  <div class="ticker-track" aria-label="Precios de metales en tiempo real">
+    {[...prices, ...prices].map((item) => (
+      <div class="flex items-center gap-3 px-6 whitespace-nowrap">
+        <span class="text-sm">{item.icon}</span>
+        <span class="text-sm font-heading font-medium text-gray-300">{item.name}</span>
+        <span class="font-mono font-bold text-white text-sm">{item.price}</span>
+        <span class={`flex items-center text-xs ${
+          item.trend === 'up' ? 'text-green-400' :
+          item.trend === 'down' ? 'text-red-400' : 'text-yellow-400'
+        }`}>
+          {item.trend === 'up' && (
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg>
+          )}
+          {item.trend === 'down' && (
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+          )}
+          {item.trend === 'stable' && (
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14"/></svg>
+          )}
+        </span>
+        <span class="text-white/10">│</span>
+      </div>
+    ))}
+  </div>
+</div>

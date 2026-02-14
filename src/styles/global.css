@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════
+   EXPORTANDES — Global Design System
+   Industrial Elegance + Fintech Precision
+   ═══════════════════════════════════════════════════════ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-carbon text-white font-body;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-accent-teal/30 text-white;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  .glass-strong {
+    @apply bg-white/10 backdrop-blur-2xl border border-white/15 shadow-2xl;
+  }
+
+  /* CTA Buttons */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3
+           bg-accent-teal text-white font-heading font-semibold
+           rounded-lg transition-all duration-300
+           hover:bg-accent-teal-light hover:shadow-lg hover:shadow-accent-teal/25
+           active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3
+           border-2 border-accent-teal text-accent-teal font-heading font-semibold
+           rounded-lg transition-all duration-300
+           hover:bg-accent-teal hover:text-white
+           active:scale-95;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center gap-2 px-6 py-3
+           bg-[#25D366] text-white font-heading font-semibold
+           rounded-lg transition-all duration-300
+           hover:bg-[#20BD5A] hover:shadow-lg hover:shadow-[#25D366]/30
+           active:scale-95;
+  }
+
+  /* Price Display */
+  .price-tag {
+    @apply font-mono text-3xl font-bold text-accent-teal tabular-nums;
+  }
+
+  /* Section Wrapper */
+  .section-wrapper {
+    @apply relative py-20 lg:py-28;
+  }
+
+  /* Overlay for image backgrounds */
+  .bg-overlay {
+    @apply absolute inset-0 bg-gradient-to-b from-carbon/80 via-carbon/70 to-carbon;
+  }
+
+  /* Animated underline for links */
+  .link-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0
+           after:h-[2px] after:w-0 after:bg-accent-teal
+           after:transition-all after:duration-300
+           hover:after:w-full;
+  }
+
+  /* Trend indicators */
+  .trend-up {
+    @apply text-green-400;
+  }
+
+  .trend-down {
+    @apply text-red-400;
+  }
+
+  .trend-stable {
+    @apply text-yellow-400;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-teal to-accent-blue;
+  }
+
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+}
+
+/* Ticker animation */
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 35s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-carbon;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-mid rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-accent-teal/50;
+}
+
+/* Page transition fade */
+@keyframes page-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+main {
+  animation: page-fade-in 0.4s ease-out;
+}

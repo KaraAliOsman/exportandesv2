@@ -1,0 +1,89 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+import MaterialDetail from '@/components/MaterialDetail.astro';
+import Footer from '@/components/Footer.astro';
+
+const materials = [
+  {
+    name: 'Perfil de Aluminio',
+    price: '$1.900',
+    description: 'Marcos de ventanas, puertas, barandas, perfiles de construcción',
+  },
+  {
+    name: 'Aluminio Duro (Fundición)',
+    price: '$1.400',
+    description: 'Piezas macizas, motores, bloques, partes industriales',
+  },
+  {
+    name: 'Latas de Aluminio',
+    price: '$900',
+    description: 'Latas de bebida compactadas o sueltas, papel aluminio',
+  },
+  {
+    name: 'Aluminio Limpio Mixto',
+    price: '$1.200',
+    description: 'Mezcla de tipos de aluminio limpio y separado',
+  },
+];
+
+const seoContent = `
+<p>El <strong>aluminio</strong> es uno de los metales más reciclados del mundo, y en <strong>Concepción</strong> y la <strong>Región del Bio Bio</strong>, Exportandes ofrece los <strong>mejores precios de compra por kilo de aluminio</strong> del mercado.</p>
+
+<h3>¿Por qué reciclar aluminio en 2026?</h3>
+<p>El reciclaje de aluminio consume un <strong>95% menos de energía</strong> que la producción primaria. Esto convierte al aluminio reciclado en uno de los materiales más valiosos de la economía circular. En Exportandes, compramos tu aluminio y lo exportamos directamente a fundiciones internacionales en <strong>Turquía</strong>, lo que nos permite ofrecerte un precio muy superior al de cualquier chatarrería local.</p>
+
+<h3>¿Qué tipos de aluminio aceptamos?</h3>
+<p>Compramos prácticamente todos los tipos de aluminio: <strong>perfil de aluminio</strong> (ventanas, puertas, marcos), <strong>aluminio duro</strong> (piezas industriales, motores), <strong>latas de aluminio</strong> (compactadas o sueltas) y aluminio mixto limpio. Para obtener el mejor precio, te recomendamos separar el aluminio por tipo.</p>
+
+<h3>Proceso de compra</h3>
+<p>Es simple: <strong>1)</strong> Contáctanos por WhatsApp, <strong>2)</strong> Trae tu material o coordina retiro para +500 kg, <strong>3)</strong> Pesamos con balanza certificada a la vista, <strong>4)</strong> Te pagamos al instante en efectivo o transferencia. Sin letra chica, sin descuentos sorpresa.</p>
+
+<h3>Precio del aluminio en Chile 2026</h3>
+<p>El <strong>precio del kilo de aluminio en Chile</strong> varía según el tipo y la pureza del material. En Exportandes actualizamos nuestros precios diariamente de acuerdo al mercado internacional de la <strong>London Metal Exchange (LME)</strong>. Consulta siempre nuestros precios actualizados para asegurar que estás recibiendo el mejor valor por tu material.</p>
+`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Compra de Aluminio — Exportandes",
+  "description": "Compra de aluminio reciclado al mejor precio en Concepción, Chile. Perfil de aluminio, aluminio duro, latas y más.",
+  "brand": { "@type": "Brand", "name": "Exportandes" },
+  "offers": materials.map(m => ({
+    "@type": "Offer",
+    "name": `Compra de ${m.name}`,
+    "price": m.price.replace('$', '').replace('.', ''),
+    "priceCurrency": "CLP",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": m.price.replace('$', '').replace('.', ''),
+      "priceCurrency": "CLP",
+      "unitText": "kg"
+    },
+    "availability": "https://schema.org/InStock"
+  })),
+};
+---
+
+<Layout
+  title="Compra de Aluminio al Mejor Precio — Perfil, Latas, Duro | Exportandes Concepción"
+  description="Vendé tu aluminio al mejor precio en Concepción. Perfil $1.900/kg, Aluminio Duro $1.400/kg, Latas $900/kg. Pago inmediato. Exportación directa. WhatsApp ahora."
+  keywords="reciclaje de aluminio Concepción, precio kilo aluminio Chile 2026, vender perfil aluminio, compra aluminio Bio Bio, precio aluminio hoy, chatarra aluminio Concepción, reciclar latas aluminio precio"
+  schema={schema}
+>
+  <Navbar />
+
+  <main>
+    <MaterialDetail
+      title="Aluminio"
+      subtitle="Compramos todos los tipos de aluminio a los precios más competitivos de la Región del Bio Bio. Exportación directa sin intermediarios."
+      description="En Exportandes nos especializamos en la compra de aluminio reciclado para exportación. Aceptamos perfil de aluminio (marcos de ventanas, puertas, perfiles de construcción), aluminio duro (piezas de motor, bloques industriales), latas de bebida y aluminio mixto limpio. Para obtener el mejor precio, te recomendamos separar el material por tipo y eliminar cualquier contaminante (plástico, fierro, etc.)."
+      heroColor="bg-blue-500"
+      materials={materials}
+      seoContent={seoContent}
+      whatsappMessage="Hola, vi su web y quiero vender aluminio. ¿Cuál es el precio actual?"
+    />
+  </main>
+
+  <Footer />
+</Layout>

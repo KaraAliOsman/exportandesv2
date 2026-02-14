@@ -1,0 +1,132 @@
+---
+const whatsappUrl = 'https://wa.me/56933301114?text=Hola,%20vi%20su%20web%20y%20quiero%20vender%20mi%20material.';
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden">
+  <!-- Background with industrial texture -->
+  <div class="absolute inset-0">
+    <div class="absolute inset-0 bg-gradient-industrial"></div>
+    <!-- Animated geometric shapes -->
+    <div class="absolute top-20 left-10 w-72 h-72 bg-accent-teal/5 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float" style="animation-delay: 3s;"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-teal/3 rounded-full blur-3xl"></div>
+    <!-- Grid pattern overlay -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left: Content -->
+      <div class="space-y-8">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-accent-teal animate-fade-in">
+          <span class="w-2 h-2 bg-accent-teal rounded-full animate-pulse"></span>
+          Precios actualizados — Región del Bio Bio
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-[1.05] animate-slide-up">
+          Transformamos tu
+          <span class="text-gradient"> Chatarra</span>
+          <br />en Capital
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-lg sm:text-xl text-gray-400 max-w-xl leading-relaxed animate-slide-up animate-delay-200">
+          Los precios de compra más altos de Chile. Exportación directa desde Bio Bio hacia los mercados internacionales.
+        </p>
+
+        <!-- Stats row -->
+        <div class="flex flex-wrap gap-6 sm:gap-10 animate-slide-up animate-delay-300">
+          <div>
+            <div class="text-3xl sm:text-4xl font-heading font-bold text-white">+500<span class="text-accent-teal">t</span></div>
+            <div class="text-sm text-gray-500">Toneladas exportadas</div>
+          </div>
+          <div>
+            <div class="text-3xl sm:text-4xl font-heading font-bold text-white">24<span class="text-accent-teal">h</span></div>
+            <div class="text-sm text-gray-500">Pago garantizado</div>
+          </div>
+          <div>
+            <div class="text-3xl sm:text-4xl font-heading font-bold text-white">N°<span class="text-accent-teal">1</span></div>
+            <div class="text-sm text-gray-500">En precio de compra</div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap gap-4 animate-slide-up animate-delay-400">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="btn-whatsapp text-base px-8 py-4">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Vender Ahora
+          </a>
+          <a href="/precios" class="btn-secondary text-base px-8 py-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+            </svg>
+            Ver Precios
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Visual Element -->
+      <div class="hidden lg:flex justify-center items-center animate-fade-in animate-delay-300">
+        <div class="relative">
+          <!-- Decorative rings -->
+          <div class="absolute inset-0 -m-8 border border-accent-teal/10 rounded-3xl animate-pulse-slow"></div>
+          <div class="absolute inset-0 -m-16 border border-primary/10 rounded-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+
+          <!-- Main visual card -->
+          <div class="glass rounded-3xl p-8 w-[380px] space-y-6">
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-400 font-heading">Precio Destacado Hoy</span>
+              <span class="flex items-center gap-1 text-green-400 text-sm font-mono">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                +2.3%
+              </span>
+            </div>
+
+            <!-- Copper Price -->
+            <div class="space-y-2">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M8 12h8"/></svg>
+                </div>
+                <div>
+                  <div class="text-sm text-gray-400">Cobre N°1</div>
+                  <div class="font-mono text-2xl font-bold text-white">$6.500<span class="text-sm text-gray-500">/kg</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+            <!-- Aluminum Price -->
+            <div class="space-y-2">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+                </div>
+                <div>
+                  <div class="text-sm text-gray-400">Perfil Aluminio</div>
+                  <div class="font-mono text-2xl font-bold text-white">$1.900<span class="text-sm text-gray-500">/kg</span></div>
+                </div>
+              </div>
+            </div>
+
+            <a href="/precios" class="block w-full text-center py-3 rounded-xl bg-accent-teal/10 text-accent-teal text-sm font-semibold hover:bg-accent-teal/20 transition-all duration-300">
+              Ver todos los precios →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-500">
+      <path d="M12 5v14M19 12l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>

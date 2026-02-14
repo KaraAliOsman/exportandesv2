@@ -1,0 +1,89 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+import MaterialDetail from '@/components/MaterialDetail.astro';
+import Footer from '@/components/Footer.astro';
+
+const materials = [
+  {
+    name: 'Cobre N°1 — Cable Pelado',
+    price: '$6.500',
+    description: 'Cable de cobre limpio, sin recubrimiento plástico ni barniz',
+  },
+  {
+    name: 'Cobre N°2 — Cable con Plástico',
+    price: '$3.200',
+    description: 'Cable eléctrico con recubrimiento, se descuenta el peso del plástico',
+  },
+  {
+    name: 'Radiadores de Cobre',
+    price: '$3.800',
+    description: 'Radiadores de vehículos y sistemas de climatización',
+  },
+  {
+    name: 'Cobre Quemado',
+    price: '$5.800',
+    description: 'Cable de cobre quemado para retirar el plástico (precio variable)',
+  },
+];
+
+const seoContent = `
+<p>El <strong>cobre</strong> es el metal no ferroso más valioso del mercado de reciclaje chileno. En <strong>Concepción</strong> y toda la <strong>Región del Bio Bio</strong>, Exportandes es el comprador que paga el <strong>precio más alto por kilo de cobre</strong>.</p>
+
+<h3>¿Por qué el cobre es tan valioso?</h3>
+<p>Chile es el mayor productor de cobre del mundo, pero el cobre reciclado tiene una demanda internacional enorme. El cobre puede reciclarse infinitamente sin perder propiedades. En Exportandes, exportamos directamente a <strong>fundiciones en Turquía</strong>, eliminando intermediarios y trasladando ese beneficio a tu bolsillo.</p>
+
+<h3>¿Qué tipos de cobre compramos?</h3>
+<p>Compramos <strong>cable de cobre pelado</strong> (N°1, el de mayor valor), <strong>cable con plástico</strong> (N°2), <strong>radiadores de cobre</strong>, <strong>cobre quemado</strong>, tuberías, recortes y cualquier pieza de cobre limpio. Para maximizar tu ganancia, te recomendamos pelar el cable y separar el cobre de otros materiales.</p>
+
+<h3>Precio del cobre hoy en Concepción</h3>
+<p>El <strong>precio del cobre hoy en Chile</strong> se determina por la cotización internacional en la <strong>London Metal Exchange (LME)</strong> y la Bolsa de Metales de Londres. En Exportandes, actualizamos nuestros precios diariamente para asegurarnos de ofrecerte el valor más justo y competitivo del mercado. El <strong>cobre N°1 (cable pelado)</strong> se cotiza actualmente a <strong>$6.500/kg</strong>, uno de los precios más altos disponibles en la región.</p>
+
+<h3>¿Cómo vender tu cobre?</h3>
+<p><strong>1)</strong> Escríbenos por WhatsApp indicando el tipo y cantidad estimada, <strong>2)</strong> Trae tu material a nuestra bodega en Av. Pedro de Valdivia 733, Concepción — o coordinamos retiro para +500 kg, <strong>3)</strong> Pesamos con balanza certificada frente a ti, <strong>4)</strong> Te pagamos inmediatamente. Sin descuentos ocultos, sin esperas.</p>
+`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Compra de Cobre — Exportandes",
+  "description": "Compra de cobre reciclado al mejor precio en Concepción, Chile. Cable pelado, cable con plástico, radiadores y más.",
+  "brand": { "@type": "Brand", "name": "Exportandes" },
+  "offers": materials.map(m => ({
+    "@type": "Offer",
+    "name": `Compra de ${m.name}`,
+    "price": m.price.replace('$', '').replace('.', ''),
+    "priceCurrency": "CLP",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": m.price.replace('$', '').replace('.', ''),
+      "priceCurrency": "CLP",
+      "unitText": "kg"
+    },
+    "availability": "https://schema.org/InStock"
+  })),
+};
+---
+
+<Layout
+  title="Compra de Cobre al Mejor Precio — Cable Pelado, Radiadores | Exportandes Concepción"
+  description="Vendé tu cobre al mejor precio en Concepción. Cobre N°1 $6.500/kg, Cobre N°2 $3.200/kg, Radiadores $3.800/kg. Pago inmediato. WhatsApp ahora."
+  keywords="precio cobre hoy Concepción, vender cobre Chile 2026, precio kilo cobre cable pelado, compra cobre Bio Bio, reciclar cobre Concepción, chatarra cobre precio, precio cobre reciclado Chile"
+  schema={schema}
+>
+  <Navbar />
+
+  <main>
+    <MaterialDetail
+      title="Cobre"
+      subtitle="El metal más valioso del reciclaje chileno. Compramos todo tipo de cobre al precio de exportación directa."
+      description="El cobre es nuestro producto estrella. En Exportandes compramos cable de cobre pelado (N°1), cable con recubrimiento plástico (N°2), radiadores de cobre, cobre quemado, tuberías, recortes industriales y cualquier pieza de cobre. Para obtener el mejor precio por tu material, te recomendamos pelar el cable y separar el cobre de otros metales y contaminantes."
+      heroColor="bg-orange-500"
+      materials={materials}
+      seoContent={seoContent}
+      whatsappMessage="Hola, vi su web y quiero vender cobre. ¿Cuál es el precio actual?"
+    />
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,113 @@
+---
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+  schema?: object;
+}
+
+const {
+  title,
+  description = 'Exportandes - Compra de chatarra y metales al mejor precio en Concepción, Chile. Cobre, aluminio y más. Exportación directa a Turquía.',
+  keywords = 'compro chatarra Bio Bio, precio cobre hoy Concepción, venta perfil aluminio exportación, reciclaje industrial Chile, compra metales Concepción',
+  ogImage = '/og-image.jpg',
+  schema,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Exportandes",
+  "description": "Compra de chatarra y metales al mejor precio en Concepción, Chile. Exportación directa desde Bio Bio.",
+  "image": "/og-image.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Pedro de Valdivia 733",
+    "addressLocality": "Concepción",
+    "addressRegion": "Biobío",
+    "postalCode": "4030000",
+    "addressCountry": "CL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -36.8270,
+    "longitude": -73.0503
+  },
+  "telephone": "+56933301114",
+  "url": "https://exportandes.cl",
+  "priceRange": "$$",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "08:30",
+    "closes": "18:00"
+  },
+  "sameAs": [],
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": -36.8270,
+      "longitude": -73.0503
+    },
+    "geoRadius": "100000"
+  }
+};
+
+const schemaData = schema || defaultSchema;
+---
+
+<!doctype html>
+<html lang="es-CL" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Exportandes" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="es_CL" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Fonts: Space Grotesk + Inter + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+  </head>
+  <body class="min-h-screen bg-carbon text-white antialiased">
+    <slot />
+  </body>
+</html>
